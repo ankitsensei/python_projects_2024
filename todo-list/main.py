@@ -11,6 +11,18 @@ def clear_terminal():
 
 print("Welcome to todo list")
 
+def display(task):
+    global lst
+    count = 1
+    for i in lst:
+        print(f"{count}. {i}")
+        count+=1
+    #print completed task
+    print("COMPLETED TASK ✅")
+    count2 = 1
+    for i in task:
+        print(f"{count2}. {i}")
+        count2+=1
 def add_task():
     clear_terminal()
     global lst
@@ -32,16 +44,28 @@ def delete_task():
         # else:
             # print("Value out of range !!!")
     except IndexError:
+
         print("Value out of range.")
     except ValueError:
         print("Invalid Value.")
-def display():
+
+def task_done(task):
     global lst
     count = 1
     for i in lst:
         print(count, ".", i)
         count+=1
+    ask = (int(input("Which task of your is done? : "))-1)
+    try:
+        task.append(ask)
+        del lst[ask]
+    except IndexError:
+        print("Value out of range.")
+    except ValueError:
+        print("Invalid Value")
+
 lst = []
+task = []
 
 
 while True:
@@ -57,13 +81,16 @@ while True:
     choose = int(input("SELECT ANY OPTION: "))
     if choose == 1:
         clear_terminal()
-        display()
+        display(task)
     elif choose == 2:
         clear_terminal()
         add_task()
     elif choose == 3:
         clear_terminal()
         delete_task()
+    elif choose == 4:
+        clear_terminal()
+        task_done(task)
     elif choose == 6:
         clear_terminal()
         break
