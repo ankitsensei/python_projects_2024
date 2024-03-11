@@ -14,15 +14,23 @@ print("Welcome to todo list")
 def display(task):
     global lst
     count = 1
-    for i in lst:
-        print(f"{count}. {i}")
-        count+=1
+    print("INCOMPLETE TASKS ❌")
+    if len(lst)!=0:
+        for i in lst:
+            print(f"{count}. {i}")
+            count+=1
+    else:
+        print("===> NONE 😀")
+    print()
     #print completed task
     print("COMPLETED TASK ✅")
-    count2 = 1
-    for i in task:
-        print(f"{count2}. {i}")
-        count2+=1
+    if len(task) !=0:
+        count2 = 1
+        for j in task:
+            print(f"{count2}. {j}")
+            count2+=1
+    else:
+        print("===> NONE 🙃")
 def add_task():
     clear_terminal()
     global lst
@@ -55,10 +63,25 @@ def task_done(task):
     for i in lst:
         print(count, ".", i)
         count+=1
-    ask = (int(input("Which task of your is done? : "))-1)
+    ask = (int(input("Which task number is done? : "))-1)
     try:
-        task.append(ask)
+        task.append(lst[ask])
         del lst[ask]
+        print("Task done 😁")
+    except ValueError:
+        print("Only use numbers !!")
+    except IndexError:
+        print("Value is out of range.")
+def task_undone(task):
+    global lst
+    count = 1
+    for i in lst:
+        print(count, ".", i)
+        count+=1
+    ask = (int(input("Which task of your is undone? : "))-1)
+    try:
+        lst.append(ask)
+        del task[ask]
     except IndexError:
         print("Value out of range.")
     except ValueError:
@@ -91,6 +114,9 @@ while True:
     elif choose == 4:
         clear_terminal()
         task_done(task)
+    elif choose == 5:
+        clear_terminal()
+        task_undone(task)
     elif choose == 6:
         clear_terminal()
         break
