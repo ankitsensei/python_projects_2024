@@ -9,8 +9,6 @@ def clear_terminal():
         os.system('clear')
 
 
-print("Welcome to todo list")
-
 def display(task):
     global lst
     count = 1
@@ -31,19 +29,22 @@ def display(task):
             count2+=1
     else:
         print("===> NONE 🙃")
+
+
 def add_task():
     clear_terminal()
     global lst
     add = input("Enter a task: ")
     lst.append(add)
     print("ADDED SUCCESSFULLY !!!")
+
+
 def delete_task():
     global lst
     count = 1
     for i in lst:
         print(count, ".", i)
         count+=1
-
     delete = (int(input("Enter Serial number of task to delete it: "))-1)
     try:
         # if delete>0 and delete<=len(lst):
@@ -56,6 +57,7 @@ def delete_task():
         print("Value out of range.")
     except ValueError:
         print("Invalid Value.")
+
 
 def task_done(task):
     global lst
@@ -72,15 +74,17 @@ def task_done(task):
         print("Only use numbers !!")
     except IndexError:
         print("Value is out of range.")
+
+
 def task_undone(task):
     global lst
     count = 1
-    for i in lst:
+    for i in task:
         print(count, ".", i)
         count+=1
     ask = (int(input("Which task of your is undone? : "))-1)
     try:
-        lst.append(ask)
+        lst.append(task[ask])
         del task[ask]
     except IndexError:
         print("Value out of range.")
@@ -90,7 +94,7 @@ def task_undone(task):
 lst = []
 task = []
 
-
+print("Welcome to todo list")
 while True:
     print('''
 ✨ TODO LIST ✨
