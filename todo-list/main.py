@@ -20,6 +20,7 @@ def display(task):
     else:
         print("===> NONE 😀")
     print()
+
     #print completed task
     print("COMPLETED TASK ✅")
     if len(task) !=0:
@@ -33,25 +34,20 @@ def display(task):
 
 def add_task():
     clear_terminal()
-    global lst
     add = input("Enter a task: ")
     lst.append(add)
     print("ADDED SUCCESSFULLY !!!")
 
 
 def delete_task():
-    global lst
     count = 1
     for i in lst:
         print(count, ".", i)
         count+=1
     delete = (int(input("Enter Serial number of task to delete it: "))-1)
     try:
-        # if delete>0 and delete<=len(lst):
         del lst[delete]
         print("DELETED SUCCESSFULLY !!!")
-        # else:
-            # print("Value out of range !!!")
     except IndexError:
 
         print("Value out of range.")
@@ -60,7 +56,6 @@ def delete_task():
 
 
 def task_done(task):
-    global lst
     count = 1
     for i in lst:
         print(count, ".", i)
@@ -77,7 +72,6 @@ def task_done(task):
 
 
 def task_undone(task):
-    global lst
     count = 1
     for i in task:
         print(count, ".", i)
