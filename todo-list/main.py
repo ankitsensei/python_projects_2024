@@ -16,19 +16,31 @@ def add_task():
     global lst
     add = input("Enter a task: ")
     lst.append(add)
-    print("SUCCESSFULLY ADDED ✅")
+    print("ADDED SUCCESSFULLY !!!")
 def delete_task():
     global lst
     count = 1
     for i in lst:
         print(count, ".", i)
+        count+=1
 
+    delete = (int(input("Enter Serial number of task to delete it: "))-1)
+    try:
+        # if delete>0 and delete<=len(lst):
+        del lst[delete]
+        print("DELETED SUCCESSFULLY !!!")
+        # else:
+            # print("Value out of range !!!")
+    except IndexError:
+        print("Value out of range.")
+    except ValueError:
+        print("Invalid Value.")
 def display():
     global lst
     count = 1
     for i in lst:
         print(count, ".", i)
-
+        count+=1
 lst = []
 
 
