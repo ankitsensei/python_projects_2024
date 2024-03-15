@@ -6,5 +6,17 @@ informations = {
     "wordle":58740000,
     "weather":	57810000,
     "gmail":52000000,
-    "google translate":39270000
+    "google translate":39270000,
+    "yahoo mail":36290000,
+    "yahoo":35020000,
+    "walmart": 33120000,
+    "translate":32500000,
+    "fox news":28310000,
+    "nfl":26550000,
+    "ebay":26260000,
+    "home depot": 26220000,
+    "nba":25080000,
+    "traductor":23600000,
+    "news":"22260000",
+    "amazon prime":21230000
     }
