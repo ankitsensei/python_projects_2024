@@ -11,24 +11,16 @@ def clear_screen():
     else:
         os.system('clear')
 
-
-
-
-
-
 def random_key(info):
     keys = info.keys()
     key = random.choice(list(info.keys()))
     return key
-
 
 def values_of_keys(info, bot,  user):
     global bot_value
     global user_value
     bot_value = info[bot]
     user_value = info[user]
-
-
 
 info = data.informations
 bot_value = 0
