@@ -48,17 +48,20 @@ while True:
             compare = bot_value < user_value
     except ValueError:
         print("Value error")
-    clear_screen()
-    if compare == True:
-        score+=1
-        bot = user
-        print(f"Your current score = {score}")
-    else:
-        if score == 0:
-            print("A small kid would perform better than you. 🙄")
-        elif score <=3:
-            print("Still need improvement 😐")
+    try:
+        clear_screen()
+        if compare == True:
+            score+=1
+            bot = user
+            print(f"Your current score = {score}")
         else:
-            print("Umm, better I suppose 😌")
-        print(f"Your total score is {score}.")
-        break
+            if score == 0:
+                print("A small kid would perform better than you. 🙄")
+            elif score <=3:
+                print("Still need improvement 😐")
+            else:
+                print("Umm, better I suppose 😌")
+            print(f"Your total score is {score}.")
+            break
+    except:
+        print("")
