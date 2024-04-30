@@ -26,8 +26,23 @@ def play_music(file):
     pygame.mixer.music.play()
 
 
+# Function to render text
+def render_text(text, font, color, x, y):
+    text_surface = font.render(text, True, color)
+    screen.blit(text_surface, (x, y))
+
+font = pygame.font.SysFont(None, 24)
+
 running = True
 while running:
+    # Clear the screen
+    screen.fill((0, 0, 0))
+
+    # Render text
+    render_text("Track: " + music_files[current_track_index], font, (255, 255, 255), 10, 10)
+    render_text("Volume: {:.1f}".format(volume), font, (255, 255, 255), 10, 30)
+    render_text("Status: " + ("Playing" if not paused else "Paused"), font, (255, 255, 255), 10, 50)
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
