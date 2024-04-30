@@ -1,5 +1,7 @@
 import pygame
 import os
+from mutagen.mp3 import MP3
+from mutagen.id3 import ID3, APIC
 
 pygame.init()
 
@@ -31,6 +33,13 @@ def render_text(text, font, color, x, y):
     text_surface = font.render(text, True, color)
     screen.blit(text_surface, (x, y))
 
+# Function to render album art
+def render_album_art(album_art_path):
+    if os.path.exists(album_art_path):
+        album_art_surface = pygame.image.load(album_art_path)
+        album_art_surface = pygame.transform.scale(album_art_surface, (100, 100))
+        screen.blit(album_art_surface, (screen_width - 110, 50))
+
 font = pygame.font.SysFont(None, 24)
 
 running = True
@@ -42,6 +51,15 @@ while running:
     render_text("Track: " + music_files[current_track_index], font, (255, 255, 255), 10, 10)
     render_text("Volume: {:.1f}".format(volume), font, (255, 255, 255), 10, 30)
     render_text("Status: " + ("Playing" if not paused else "Paused"), font, (255, 255, 255), 10, 50)
+
+    # Render album art
+    file_path = os.path.join(music_directory, music_files[current_track_index])
+    audio = MP3(file_path, ID3=ID3)
+    if 'APIC:' in audio.tags:
+        album_art = audio.tags['APIC:'].data
+        with open("album_art.jpg", 'wb') as img_file:
+            img_file.write(album_art)
+        render_album_art("album_art.jpg")
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
