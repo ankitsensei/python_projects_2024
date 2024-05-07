@@ -5,11 +5,14 @@ class Solution:
         arabic = 0
         prev_value = 0
         for i in reversed(s):
+            if i not in roman_value:
+                return "Invalid Roman numeral"
             value = roman_value[i]
             if value < prev_value:
                 arabic -= value
             else:
                 arabic += value
+                prev_value = value
         return arabic
 
 s = input("Enter a roman number: ").lower()
