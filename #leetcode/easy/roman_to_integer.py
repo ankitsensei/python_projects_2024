@@ -13,8 +13,12 @@ class Solution:
             else:
                 arabic += value
                 prev_value = value
-        return arabic
+        if 1 <= arabic and arabic <= 3999:
+            return arabic
 
 s = input("Enter a roman number: ").lower()
-sol = Solution()
-print(sol.romanToInt(s))
+if 1 <= len(s) and len(s) <= 15:
+    sol = Solution()
+    print(sol.romanToInt(s))
+else:
+    print("Length of roman number should be more than 0 and less then 16 !!!")
