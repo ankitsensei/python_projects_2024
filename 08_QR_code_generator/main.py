@@ -1,0 +1,1 @@
+import qrcode as qr
