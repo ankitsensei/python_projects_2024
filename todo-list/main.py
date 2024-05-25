@@ -99,22 +99,25 @@ while True:
 5. task undone ❌
 6. Exit ⭕
 ''')
-    choose = int(input("SELECT ANY OPTION: "))
-    if choose == 1:
-        clear_terminal()
-        display(task)
-    elif choose == 2:
-        clear_terminal()
-        add_task()
-    elif choose == 3:
-        clear_terminal()
-        delete_task()
-    elif choose == 4:
-        clear_terminal()
-        task_done(task)
-    elif choose == 5:
-        clear_terminal()
-        task_undone(task)
-    elif choose == 6:
-        clear_terminal()
-        break
+    try:
+        choose = int(input("SELECT ANY OPTION: "))
+        if choose == 1:
+            clear_terminal()
+            display(task)
+        elif choose == 2:
+            clear_terminal()
+            add_task()
+        elif choose == 3:
+            clear_terminal()
+            delete_task()
+        elif choose == 4:
+            clear_terminal()
+            task_done(task)
+        elif choose == 5:
+            clear_terminal()
+            task_undone(task)
+        elif choose == 6:
+            clear_terminal()
+            break
+    except:
+        print("Try again, you have to select option..")
